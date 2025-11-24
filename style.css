@@ -1,76 +1,136 @@
+
+/* style.css
+   Modern, minimal, elegant styling for the provided HTML structure
+   Matches this HTML:
+   <div class="container">
+      <h1>Password Generator</h1>
+      <input id="password-length-input">
+      <span id="error-span"></span>
+      <button id="generate-password-btn"></button>
+      <p id="password-paragraph"></p>
+   </div>
+*/
+
+/* ---- Global reset ---- */
 *{
-    margin 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
-body {
-    display: flex;
-    height: 100vh;
-    flex-direction: column;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #333;
+/* ---- Page background ---- */
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: radial-gradient(circle at top left, rgba(124,92,255,0.22), transparent 45%),
+              radial-gradient(circle at bottom right, rgba(0,212,255,0.18), transparent 45%),
+              #0f1724;
+  padding:20px;
+  color:#e8eef7;
 }
 
-h1{
-    font-size: 1.8rem;
-    
-}
-
+/* ---- Container ---- */
 .container{
-    width: 100%;
-    max-width: 400px;
-    background: #e8e8e8;
-    padding: 5px 10px;
-    text-align: center;
-    border-radius: 4px;
-    box-shadow: 0 0px 1px black;
+  width:100%;
+  max-width:420px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border:1px solid rgba(255,255,255,0.10);
+  padding:28px;
+  border-radius:16px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+  animation: fadeIn 0.7s ease-out;
 }
 
-button{
-    font-style: 800;
-    padding: 8px 16px;
-    margin: 10px 5px;
-    border-radius: 4px;
-    border: none;
-    background: #e8e9e8;
-    transition: background 0.3s ease;
-    box-shadow: 0 0 2px black;
+/* ---- Title ---- */
+.container h1{
+  text-align:center;
+  margin-bottom:22px;
+  background: linear-gradient(135deg, #7c5cff, #00d4ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-size:1.8rem;
+  font-weight:700;
 }
 
+/* ---- Input ---- */
+#password-length-input{
+  width:100%;
+  margin-top:6px;
+  padding:12px 14px;
+  background: rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:12px;
+  color:#e8eef7;
+  font-size:1rem;
+  outline:none;
+  transition:border 0.25s ease, background 0.25s ease;
+}
+
+#password-length-input:focus{
+  border-color:#7c5cff;
+  background: rgba(255,255,255,0.12);
+}
+
+/* ---- Error span ---- */
 #error-span{
-    color: red;
-    font-weight: bold;
-    font-size: 14px;
-    display: block;
+  display:block;
+  margin-top:8px;
+  min-height:20px;
+  font-size:0.9rem;
+  color:#ff6b6b;
 }
 
-button:hover{
-    background: #989898;
+/* ---- Button ---- */
+#generate-password-btn{
+  width:100%;
+  margin-top:18px;
+  padding:14px;
+  background:linear-gradient(135deg, #7c5cff, #00d4ff);
+  border:none;
+  border-radius:12px;
+  color:#fff;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(0,0,0,0.35);
+  transition: transform 0.18s ease, box-shadow 0.25s ease;
 }
 
-input{
-  padding: 8px 16px;
-  margin: 5px 10px;
-  border-radius: 4px;
-  border: none;
-  box-shadow: 0 0 2px #e8e8e8
+#generate-password-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 28px rgba(0,0,0,0.42);
 }
 
-input:focus{
-    outline: none;
+#generate-password-btn:active{
+  transform:scale(0.97);
 }
 
+/* ---- Generated password paragraph ---- */
 #password-paragraph{
-    font-style: 800;
-    overflow: scroll;
-    background: #333;
-    padding: 10px 20px;
-    display: none;
-    color: #fff;
-    font-size: 1rem;
-    border-radius: 4px;
+  margin-top:22px;
+  background:rgba(255,255,255,0.07);
+  padding:14px;
+  border-radius:12px;
+  min-height:45px;
+  font-family: ui-monospace, monospace;
+  font-size:1rem;
+  color:#e8eef7;
+  word-break:break-all;
+  border:1px solid rgba(255,255,255,0.10);
+}
+
+/* ---- Fade animation ---- */
+@keyframes fadeIn{
+  from{ opacity:0; transform:translateY(15px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* ---- Small screens ---- */
+@media(max-width:480px){
+  .container{ padding:22px }
+  #generate-password-btn{ padding:12px }
 }
